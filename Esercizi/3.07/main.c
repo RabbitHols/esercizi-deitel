@@ -13,6 +13,8 @@ d) 19,27,35,43,51
 
 int main()
 {
+
+// RIGA A
 	
 	printf("a) ");
 
@@ -24,6 +26,7 @@ int main()
 
 	printf("\n");
 
+// RIGA B
 
 	int numero = 3;
 
@@ -37,7 +40,33 @@ int main()
 
 	printf("\n");
 
-	// test
+// RIGA C
+
+	printf("c) ");
+
+	numero = 20; // riutilizzo numero
+
+	for(cont = 0; cont < 6; cont++){
+		printf("%d ", numero);
+
+		numero -= 4;
+	}
+
+	printf("\n");
+
+// RIGA D
+
+	printf("c) ");
+
+	numero = 19;
+
+	for(cont = 0; cont < 5; cont++){
+		printf("%d ", numero);
+
+		numero += 8;
+	}
+
+	printf("\n");
 
 	return 0;
 }
