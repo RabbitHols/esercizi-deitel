@@ -24,9 +24,18 @@ int main()
 
 	printf("\n");
 
+
+	int numero = 3;
+
+	printf("b) ");
+
 	for(cont = 0; cont < 5; cont++){
-			// test
+		printf("%d ", numero);
+
+		numero += 5;
 	}
+
+	printf("\n");
 
 	return 0;
 }
