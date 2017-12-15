@@ -53,10 +53,40 @@ int main(){
 
 float emissioneSalario(float oreLavorate, float pagaOraria){
 
+	float stipendioStd;
+	float stipendioStr;
+	float stipendioFnl;
+	float pagaStd;
+
+	int contatore = 1;
+
+	stipendioStd = 0;
+	stipendioStr = 0;
+	stipendioFnl = 0;
+
+	pagaStd = pagaOraria + (pagaOraria / 2);
+
+	contatore = 0;
+
+	for(contatore; contatore <= oreLavorate; contatore++){
+		if(contatore < 40){stipendioStd = stipendioStd + pagaOraria;}
+		if(contatore > 40){stipendioStr = stipendioStr + pagaStd;}
+	}
+
+	return stipendioFnl = stipendioStd + stipendioStr;
+
+}
+
+
+
+/*
+float emissioneSalario(float oreLavorate, float pagaOraria){
+
 	float calcoloOreStraordinari;
-	float ds;
 	float salarioFinale;
 	float pagaStandard;
+	float oreStraordinarie;
+
 	pagaStraordinari = (pagaOraria / 2) + pagaOraria;
 
  	if(oreLavorate > 40){
@@ -66,4 +96,4 @@ float emissioneSalario(float oreLavorate, float pagaOraria){
 
 	salarioFinale = pagaStandard + calcoloOreStraordinari;
 	return salarioFinale;
-}
+}*/
