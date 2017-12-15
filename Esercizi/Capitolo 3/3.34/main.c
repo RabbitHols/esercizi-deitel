@@ -26,7 +26,11 @@ int main(){
 
 		for(column = 0; column < lato; column++){
 			if(row == 0 || row == lato - 1){printf("\t*"); }
-			else {	printf("\t+"); }
+
+			else {	
+					if(column == 0 || column == lato - 1){ printf("\t*"); }
+					else { printf("\t ");}
+				 }
 		}
 
 		printf("\n\n\n");
