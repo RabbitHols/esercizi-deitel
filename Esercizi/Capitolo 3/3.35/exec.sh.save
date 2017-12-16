@@ -1,7 +1,0 @@
-#!/usr/bin/
-
-for i in *.c
-
-do 
-	echo 10+2;
-done
