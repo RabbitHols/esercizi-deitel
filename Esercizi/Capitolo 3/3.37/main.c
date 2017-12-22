@@ -8,11 +8,10 @@
 
 int main(){
 	
-	int cont = 0;
+	int cont;
 
-	while(cont <= 3000000){
-		(cont % 1000000 != 0) ?: printf("%d\n", cont);
-	cont++;	
+	for(cont = 0; cont < 3000000; cont++){
+		(cont % 1000000 != 0) ?:  printf("%d\n", cont);		
 	}	
 
 
