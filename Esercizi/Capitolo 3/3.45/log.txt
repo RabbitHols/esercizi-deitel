@@ -104,8 +104,15 @@ invece di trovare due variabili uguali perchè non diamo il presupposto che tutt
 Niente alla fine non ho trovato un modo per ottimizzare completamente il codice, 
 vedrò di cercare su google qualcosa o di chiedere su stackoverflow se qualcuno se sa più di me.
 
+########## Giorno dopo 
 
+Dopo una lunga riflessione ho capito che la migliore cosa da fare per 
+aumentare l'efficienza del programma è di andare per negazione, ora
+mi spiego meglio:
 
+--Controllo che sono tutti uguali 
+--Se non lo sono allora automaticamente controllo che almeno 2 siano tutti uguali
+-- Altrimenti saranno automaticamente tutti diversi senza bisogno di un ulterio controllo, vanno fatte le modifiche sulla velocità senza l'ottimizzazzione di gcc.
 
 
 

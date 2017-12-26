@@ -1,0 +1,14 @@
+Allora il programma chiede di scrivere un programma che legga in input
+3 valori di un tipo float e determini e visualizzi se possono rappresentare i lati
+di un triangolo.
+Dunque per ora non ci interessa sapere quale tipo di triangolo rappresenti ma solo
+se può rappresentare o meno un triangolo.
+Per fare questo dobbiamo applicare le seguenti formule:
+Partendo dal presupposto che un triangolo ha 3 lati allora è vero che è un triangolo se:
+
+LATO 1 && LATO 2 && LATO 3 != 0
+LATO 1 + LATO 2 >= LATO 3
+LATO 1 + LATO 3 >= LATO 2
+LATO 2 + LATO 3 >= LATO 1
+
+Prototipiamo il codice:
