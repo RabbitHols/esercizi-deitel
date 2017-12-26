@@ -28,9 +28,11 @@ int main()
 		//intf("RevPal:%d\n", revPlindromo);
 		numero = numero / 10;
 	}	
-  	
-	if(palindromo == revPlindromo){printf("PALINDROMO\n");}
-	else { printf("NON PALINDROMO\n"); };
+	
+	(palindromo ^ revPlindromo) ? printf("Palindromo") :  printf("Non palindromo");
+
+
+
 
 
     return 0;

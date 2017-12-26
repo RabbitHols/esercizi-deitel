@@ -1,0 +1,112 @@
+allora abbiamo 3 variabili
+
+a b c
+
+dobbiamo verificare che almeno due di esse siano uguali tramite bitwise come facciamo?
+
+N.D :	^ = Xor due uguali equivalgono a 0 due diversi equvalgono a 1
+	| = Or  due almeno un acceso equivale a 1 altrimenti 0
+	& = And due uguali equivalgono a 1 altrimenti 0
+	! = Not il contrario 
+
+Supponiamo di avere le varibiali a,b,c con i seguenti valori:
+
+A = 2;
+B = 3;
+C = 2;
+
+Se confronto la prima e la seconda e poi la seconda e la terza cosa succede?
+			
+		  XOR | XOR 	RISULTATO	
+	a ^ b = | 1 0 | 1 1 | 	 0 1 = 2
+	b ^ c = | 1 1 | 1 0 |    1 1 = 3
+
+Ora proviamo a fare un and &
+
+	          AND | AND	RISULTATO 	
+		  0 1 | 1 1      0 1 = 1
+
+Dunque dice che è vero e almeno due sono uguali.
+Proviamo a vedere se non sono uguali il risultato che da:
+
+A = 1;
+B = 2;
+C = 3;
+
+
+		  XOR | XOR 	RISULTATO	
+	a ^ b = | 0 1 | 1 0 | 	 1 1 = 3
+	b ^ c = | 1 0 | 1 1 |    0 1 = 1
+
+	          AND | AND	RISULTATO 	
+		  1 1 | 0 1      1 0 = 2
+
+Sembra che funzioni ora testiamo se tutti e tre sono uguali
+
+A = 2;
+B = 2;
+C = 2;
+
+		  XOR | XOR 	RISULTATO	
+	a ^ b = | 1 1 | 1 1 | 	 0 0 = 0
+	b ^ c = | 1 1 | 1 1 |    0 0 = 0
+
+	          AND | AND	RISULTATO 	
+		  0 0 | 0 0      1 1 = 3
+
+
+Ok da quello che ho testato il programma praticamente controlla solamente se tutte e tre 
+le variabili sono uguali tutto qua. Proviamo a scriverlo normalmente:
+
+	PROTOTIPO CODICE VERBOSO :
+
+	if(a == b && b != c || a == c && c != b || b == c && a != b )	
+
+Ok penso di aver trovato un modo che funzioni matematicamente, vedi che è importante la
+ matemateica per la madonna se in 3 numeri due sono uguali questo significa che essi si 
+possono dividere per 2 no? Proviamo questo ragionamento, abbiamo le seguenti variabili 
+con i seguenti numeri:
+
+A = 2;
+B = 3;
+C = 2;
+
+Li sommiamo tutti tra di loro:
+
+2 + 3 + 2 = 7
+
+Altrimenti provo a fare la divisione no? Potrei fare:
+
+a / b == 0 || a / c == 0
+
+Non ha senso perchè non è detto che il terzo sia diverso. Insomma ci devo riflettere per dio.
+E se provassi a sommare il primo e il secondo e dividerlo per il terzo?.
+
+(a + b) / c
+
+ 2 + 3 / 2
+
+Non ha senso.
+
+Comunque in bitwise il seguente codice si trascrive cosi:
+
+	if(a == b && b != c || a == c && c != b || b == c && a != b )
+
+	if(a & b && b ^ c ecc... )
+
+Ok pensiamo ad altro, forse possiamo usare una funzione ricorsiva tipo il massimo tra 3 numeri cosi:
+
+max(a,b) e poi te la chiami dentri cosi: max(max(a,b),c)
+
+Forse riusciamo a tirare fuori qualcosa di questo tipo.Il problema con questo codice è che la terza variabile deve essere diversa, forse dobbiamo riformulare la domanda in questo modo,
+invece di trovare due variabili uguali perchè non diamo il presupposto che tutti e due siano uguali e trovare quella non uguale? il problema è che non è detto che quelle due siano uguali, possono anche essere diverse, è questo il problema.
+
+Niente alla fine non ho trovato un modo per ottimizzare completamente il codice, 
+vedrò di cercare su google qualcosa o di chiedere su stackoverflow se qualcuno se sa più di me.
+
+
+
+
+
+
+
