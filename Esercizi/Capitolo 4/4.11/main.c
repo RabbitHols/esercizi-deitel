@@ -9,31 +9,27 @@ valore letto specifichi il numero di iterazioni da fare
 int main(){
 	
 	int iterazioni;
-	int cont;
+	int cnt;
+	int num;
 	int min;
-	int numero;
 
-	printf("Numero Iterazioni?\n");
+	printf("Dammi numero di iterazioni da svolgere\n");
 	scanf("%d", &iterazioni);
-	
-	sentinella = iterazioni;
 
-	for(cont = 0; cont < iterazioni; cont++){
+	printf("Dammi numero\n");
+	scanf("%d", &num);
+
+	min = num;
+
+	for(cnt = 0; cnt < iterazioni - 1; cnt++){
 		printf("Dammi numero\n");
-		scanf("%d", &numero);
+		scanf("%d", &num);
 
-		if(numero > sentinella){
-			min = sentinella;
-		} else {
-			min = numero;
-		}
+		min = (num < min) ? num : min;
 
-		sentinella = numero;
-		
 	}
 
-	printf("%d\n", min)
-
+	printf("Il minore e': %d\n", min);	
 
 	return 0;
 }
