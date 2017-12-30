@@ -30,10 +30,10 @@ int main(){
 		scanf("%d", &check);
 
 		if(check == 10){
-			printf("Numero conto:\t%d\n", N_Conto_Alberto);
+			printf("Numero conto:\t\t\t%d\n", N_Conto_Alberto);
 			printf("Limite conto precedente:\t%d\n", L_Conto_Alberto);
-			printf("Limite conto attuale:\t%d\n", L_Conto_Alberto / 2);
-			printf("Saldo conto attuale:\t%d\n", S_Conto_Alberto);
+			printf("Limite conto attuale:\t\t%d\n", L_Conto_Alberto / 2);
+			printf("Saldo conto attuale:\t\t%d\n", S_Conto_Alberto);
 		}
 
 		if(check == 11){
