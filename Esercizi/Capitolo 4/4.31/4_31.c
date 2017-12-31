@@ -1,39 +1,25 @@
-/*
- * Disegna un rombo con le printf di 9 righe
- */
-
 #include <stdio.h>
 
 int main(){
 
-	int cont 	= 0x0;
-	int spazio 	= 0x0;
-	int asterischi	= 0x0;
-	int i = 4;
-	int j = 0;
-	int tester = 0;	
-
-	for(cont; cont <= 10; cont++){
-		for(spazio = 0; spazio <= i; spazio++){
-			printf(" ");
-		}
-		for(asterischi = 0; asterischi <= j; asterischi++){
-			printf("*");
-		}
-		printf("\n");
-		i--;
-		if(cont <= 4){	j = j + 2; }
-		if(cont >  4){
-			
-			for(spazio; spazio <= tester; spazio++){
+	
+	int cnt;
+	int xcnt;
+	int max = 10;
+	int scnt = max;
+	int asterischi = 1;
+	
+	for(cnt = 1; cnt < max ;cnt++){
+		for(scnt = max - cnt; scnt > 0; scnt--){
 				printf(" ");
 			}
+		for(xcnt = 0; xcnt < asterischi; xcnt++){
+			printf("*");
+		}
+		asterischi = asterischi + 2;
+		printf("\n");
 
-			j = j - 2;
-	       		tester++;
-		}	
 	}
-
-
+	
 	return 0;
 }
