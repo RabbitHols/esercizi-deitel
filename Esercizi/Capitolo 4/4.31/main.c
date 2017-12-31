@@ -5,7 +5,7 @@ int main(){
 	
 	int cnt;
 	int xcnt;
-	int max = 10;
+	int max = 3;
 	int scnt = max;
 	int asterischi = 1;
 	
@@ -20,6 +20,20 @@ int main(){
 		printf("\n");
 
 	}
+
+	for(cnt = max; cnt > 0; cnt--){
+		for(scnt = 0 + cnt; scnt < max; scnt++){
+			printf(" ");
+		}
+		for(scnt = asterischi; scnt > 0; scnt--){
+			printf("*");
+		}
+		printf("\n");
+		asterischi = asterischi - 2;
+
+
+	}
+
 	
 	return 0;
 }

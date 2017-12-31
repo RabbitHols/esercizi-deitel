@@ -17,7 +17,7 @@ int main(){
 
 	for(cnt = 0; cnt <= 10; cnt++){
 			printf("%d\t   %d\t\t%d\t  ", cnt, ToBin(cnt), ToOctal(cnt));
-			ToHex(cnt);
+			ToHex(clearcnt);
 			printf("\n");
 	}
 
