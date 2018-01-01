@@ -1,11 +1,23 @@
+/**
+Decidere tramite parametro la grandezza del Rombo
+**/
+
 #include <stdio.h>
 #include <stdlib.h>
 
 int main(int argc, char const *argv[]){
 
 	if(argv[1] == NULL){
-		printf("Il programma ha bisogno che gli passi minimo un argomento\n");
-	}	
+		printf("Devi dare almeno un elemento come parametro\n");
+
+		return 0;
+	} 
+
+	if(atoi(argv[1]) % 2 == 0){
+		printf("Il programma accetta solo parametri dispari\n");
+
+		return 0;
+	}
 
 
 	int cnt;
@@ -14,11 +26,8 @@ int main(int argc, char const *argv[]){
 	int scnt = max;
 	int asterischi = 1;
 
-	if(atoi(argv[1]) == 3){
-		max = 4;
-	}
-
-	max = max - 2;
+	max = (max / 2) + 1;
+	
 	
 	for(cnt = 1; cnt < max ;cnt++){
 		for(scnt = max - cnt; scnt > 0; scnt--){
