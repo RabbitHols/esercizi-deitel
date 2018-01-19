@@ -29,5 +29,5 @@ int main(){
 }
 
 void randomizzatore(int min, int max){
-	printf("%li\n", ( min + rand()%max ));
+	printf("%d\n", ( min + rand()%max ));
 }
