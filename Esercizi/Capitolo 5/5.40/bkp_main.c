@@ -20,11 +20,11 @@ TOFIX:
 #include <stdlib.h>
 
 const int PL_1 = 0;
-const int PL_3 = 1;
-const int PL_2 = 2;
+const int PL_2 = 1;
+const int PL_3 = 2;
 
 #define DM_STCK 3
-#define DM_CLMN 5
+#define DM_CLMN 3
 
 void print(int STCK[][DM_STCK], int DM_S);
 
@@ -59,29 +59,47 @@ int main(){
 			RS_1 = CHK_STK(stack, PL_1, DM_CLMN);
 			RS_2 = CHK_STK(stack, PL_3, DM_CLMN);
 
-				if( !( (RS_1 > RS_2) ^ (RS_2 == 0) ) ){
+				RS_1 = CHK_STK(stack, PL_2, DM_CLMN);
+				RS_2 = CHK_STK(stack, PL_3, DM_CLMN);
+
+				if(RS_1 > RS_2){
+					if(RS_2 == 0){
 					MOV_PL(stack, PL_1, PL_3, DM_CLMN);
 					//printf("A --> B");
-				} else {
-					MOV_PL(stack, PL_3, PL_1, DM_CLMN);
+					} else {
+						ODINO_0:
+						MOV_PL(stack, PL_3, PL_1, DM_CLMN);
 					//printf("B --> A");
+					}
+				} if(RS_1 < RS_2) {
+					if(RS_1 == 0){
+						goto ODINO_0;
+					}
+					MOV_PL(stack, PL_1, PL_3, DM_CLMN);
 				}
 
 			}
 
 		if(cnt % 3 == 1){
 
-			RS_1 = CHK_STK(stack, PL_1, DM_CLMN);
-			RS_2 = CHK_STK(stack, PL_2, DM_CLMN);
+				RS_1 = CHK_STK(stack, PL_2, DM_CLMN);
+				RS_2 = CHK_STK(stack, PL_3, DM_CLMN);
 
-			if(RS_1 != 0){
-				if( !( (RS_1 > RS_2)^( RS_2 == 0)) ) {
+				if(RS_1 > RS_2){
+					if(RS_2 == 0){
 					MOV_PL(stack, PL_1, PL_2, DM_CLMN);
 					//printf("A --> B");
-				} 
-			} else {
+					} else {
+//					Che odino sia con me
+					ODINO_1:
 					MOV_PL(stack, PL_2, PL_1, DM_CLMN);
 					//printf("B --> A");
+					}
+				} else {
+					if(RS_1 == 0){
+						goto ODINO_1;
+					}
+					MOV_PL(stack, PL_1, PL_2, DM_CLMN);
 				}
 		}
 
@@ -90,12 +108,20 @@ int main(){
 			RS_1 = CHK_STK(stack, PL_2, DM_CLMN);
 			RS_2 = CHK_STK(stack, PL_3, DM_CLMN);
 
-				if( !( (RS_1 > RS_2) ^ (RS_2 == 0) ) ){
+				if(RS_1 > RS_2){
+					if(RS_2 == 0){
 					MOV_PL(stack, PL_2, PL_3, DM_CLMN);
 					//printf("A --> B");
-				} else {
+					} else {
+					ODINO_2:
 					MOV_PL(stack, PL_3, PL_2, DM_CLMN);
 					//printf("B --> A");
+					}
+				} else {
+					if(RS_1 == 0){
+						goto ODINO_2;
+					}
+					MOV_PL(stack, PL_2, PL_3, DM_CLMN);
 				}
 		}
 
