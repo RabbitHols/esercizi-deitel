@@ -10,36 +10,59 @@
 double toFar(double temp);
 double toCel(double temp);
 
-void tabella();
+void tabFar();
 
 int main(){
 
 	int gradi = 20.00;
 
-	printf("%f\n", toFar(gradi));
-
-	printf("%f\n", toCel(toFar(gradi)));
+	tabFar();
 
 	return 0;
 }
 
-double toCel(double temp){
+void tabFar(){
 	
-	return ( (5.0/9.0)* (temp - 32));
+	double far = 0;
+
+	for(int cnt = 0; cnt <= 100; cnt++){
+		if(cnt % 5 == 0){
+			puts("\n");
+		}
+		far = ( (double)cnt * 9.0/5.0 ) + 32;
+		printf("\tC: %d\tF: %f  ", cnt, far);
+	}
+	puts("\n");
 
 }
 
+void tabCel(){
+	
+	double far = 0;
+
+	for(int cnt = 0; cnt <= 100; cnt++){
+		if(cnt % 5 == 0){
+			puts("\n");
+		}
+		far = ( (double)cnt * 9.0/5.0 ) + 32;
+		printf("\tC: %d\tF: %f  ", cnt, far);
+	}
+	puts("\n");
+
+}
+/*
+double toCel(double temp){
+	
+	return ( (5.0/9.0)* (temp - 32));
+	
+
+
+}
+*/
 double toFar(double temp){
 
 	return ( (temp * 9.0/5.0) + 32  );
 
 }
 
-void tabella(){
-
-	char arr[]
-
-
-
-}
 
