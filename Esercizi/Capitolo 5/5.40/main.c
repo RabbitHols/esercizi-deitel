@@ -19,29 +19,39 @@ TOFIX:
 #include <math.h>
 #include <stdlib.h>
 
-const int PL_1 = 0;
-const int PL_2 = 1;
-const int PL_3 = 2;
-
+// Da non cambiare mai sono i pali !
 #define DM_STCK 3
-#define DM_CLMN 5
+
+// Questa si può cambiare sono i dischi
+#define DM_CLMN 4
 
 void print(int STCK[][DM_STCK], int DM_S);
-
 void MOV_PL(int STCK[][DM_STCK], int FROM, int TO, size_t DM_S);
 int CHK_POS_FROM(int STCK[][DM_STCK], int N_PL, size_t DM_S);
 int CHK_POS_TO(int STCK[][DM_STCK], int N_PL, size_t DM_S);
-
-char CHK_STK(char STCK[][DM_STCK], int N_PL, size_t DM_S);
+int CHK_STK(int STCK[][DM_STCK], int N_PL, size_t DM_S);
+void populate(int STCK[][DM_STCK], int DM_S);
 
 int main(){
 
+// Posizionati in base all'ordine dell'array
+
+	int PL_1 = 0;
+	int PL_2 = 1;
+	int PL_3 = 2;
+
+// In caso di dischi pari faccio swap tra Destinazione e ausiliario
+
+	if(DM_CLMN % 2 == 0){
+		PL_2 = 2;
+		PL_3 = 1;
+	}
+
+// Devo anche popolare automaticamente l'array
 	
-	char stack[][DM_STCK] = { {1,0,0},
-					   		 {2,0,0},
-					   		 {3,0,0}, 
-					   		 {4,0,0},
-					   		 {5,0,0}};
+	int stack[DM_CLMN][DM_STCK];
+
+	populate(stack, DM_CLMN);
 
 	int mosse = pow(2,DM_CLMN) - 1;
 
@@ -52,50 +62,73 @@ int main(){
 		int RS_1 = 0;
 		int RS_2 = 0;
 
-		printf("MOSSA NUMERO: %d\n", cnt);
+		printf("MOSSA NUMERO: %d\n", 1 + cnt);
 
 		if(cnt % 3 == 0){
 
-			RS_1 = atoi(CHK_STK(stack, PL_1, DM_CLMN));
-			RS_2 = atoi(CHK_STK(stack, PL_3, DM_CLMN));
+				RS_1 = CHK_STK(stack, PL_1, DM_CLMN);
+				RS_2 = CHK_STK(stack, PL_3, DM_CLMN);
 
-				if( !( (RS_1 > RS_2) ^ (RS_2 == 0) ) ){
+				if(RS_1 > RS_2){
+					if(RS_2 == 0){
 					MOV_PL(stack, PL_1, PL_3, DM_CLMN);
 					//printf("A --> B");
-				} else {
-					MOV_PL(stack, PL_3, PL_1, DM_CLMN);
+					} else {
+						ODINO_0:
+						MOV_PL(stack, PL_3, PL_1, DM_CLMN);
 					//printf("B --> A");
+					}
+				} if(RS_1 < RS_2) {
+					if(RS_1 == 0){
+						goto ODINO_0;
+					}
+					MOV_PL(stack, PL_1, PL_3, DM_CLMN);
 				}
 
 			}
 
 		if(cnt % 3 == 1){
 
-			RS_1 = atoi(CHK_STK(stack, PL_1, DM_CLMN));
-			RS_2 = atoi(CHK_STK(stack, PL_2, DM_CLMN));
+				RS_1 = CHK_STK(stack, PL_1, DM_CLMN);
+				RS_2 = CHK_STK(stack, PL_2, DM_CLMN);
 
-			if(RS_1 != 0){
-				if( !( (RS_1 > RS_2)^( RS_2 == 0)) ) {
+				if(RS_1 > RS_2){
+					if(RS_2 == 0){
 					MOV_PL(stack, PL_1, PL_2, DM_CLMN);
 					//printf("A --> B");
-				} 
-			} else {
+					} else {
+//					Che odino sia con me
+					ODINO_1:
 					MOV_PL(stack, PL_2, PL_1, DM_CLMN);
 					//printf("B --> A");
+					}
+				} else {
+					if(RS_1 == 0){
+						goto ODINO_1;
+					}
+					MOV_PL(stack, PL_1, PL_2, DM_CLMN);
 				}
 		}
 
 		if(cnt % 3 == 2){
 
-			RS_1 = atoi(CHK_STK(stack, PL_2, DM_CLMN));
-			RS_2 = atoi(CHK_STK(stack, PL_3, DM_CLMN));
+			RS_1 = CHK_STK(stack, PL_2, DM_CLMN);
+			RS_2 = CHK_STK(stack, PL_3, DM_CLMN);
 
-				if( !( (RS_1 > RS_2) ^ (RS_2 == 0) ) ){
+				if(RS_1 > RS_2){
+					if(RS_2 == 0){
 					MOV_PL(stack, PL_2, PL_3, DM_CLMN);
 					//printf("A --> B");
-				} else {
+					} else {
+					ODINO_2:
 					MOV_PL(stack, PL_3, PL_2, DM_CLMN);
 					//printf("B --> A");
+					}
+				} else {
+					if(RS_1 == 0){
+						goto ODINO_2;
+					}
+					MOV_PL(stack, PL_2, PL_3, DM_CLMN);
 				}
 		}
 
@@ -110,12 +143,26 @@ int main(){
 	return 0;
 }
 
+void populate(int STCK[][DM_STCK], int DM_S){
+
+	for(int colonna = 0; colonna < DM_S; colonna++){
+		for(int riga = 0; riga < DM_STCK; riga++){
+			STCK[colonna][riga] = 0;
+		}
+	}
+
+	for(int cnt_1 = 0; cnt_1 < DM_S; cnt_1++){
+    	STCK[cnt_1][0] = cnt_1 + 1;
+    }
+
+}
+
 // Stampa le 3 torri
 
 void print(int STCK[][DM_STCK], int DM_S){
 	for(int colonne = 0; colonne < DM_CLMN; colonne++){
 		for(int righe = 0; righe < DM_STCK; righe++){
-			printf("%c ", STCK[colonne][righe]);
+			printf("%d ", STCK[colonne][righe]);
 		}
 		puts("\n");
 	}
@@ -183,13 +230,13 @@ int CHK_POS_TO(int STCK[][DM_STCK], int N_PL, size_t DM_S){
 
 */ 
 
-char CHK_STK(char STCK[][DM_STCK], int N_PL, size_t DM_S){
+int CHK_STK(int STCK[][DM_STCK], int N_PL, size_t DM_S){
 
-	char FLG;;
+	int FLG = 0;
 
 	for(int cnt = 0; cnt < DM_S; cnt++){
-    	if(atoi(STCK[cnt][N_PL]) != ' '){
-   	       FLG = atoi(STCK[cnt][N_PL]);
+    	if(STCK[cnt][N_PL] != 0){
+   	       FLG = STCK[cnt][N_PL];
       	break;
       }
     }
