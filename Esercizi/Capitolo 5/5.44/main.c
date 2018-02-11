@@ -17,7 +17,6 @@ Sempre esercizio tipo moltiplicazioni solo che:
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <stdlib.h>
 
 void regolamento(int art);
 void flush(char);
