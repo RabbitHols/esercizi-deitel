@@ -6,10 +6,12 @@ L'algoritmo funziona perfettamente con 3 torri, ma è da perfezionare con le 4
 
 TODO: 
 	# Cercare di sbarazzarci dello zero che ci rovina l'intero array, dovrei farlo di char
-	  e usare gli spazi al posto degli zero. ! LA VEDO DURA 
+	  e usare gli spazi al posto degli zero. ! LA VEDO DURA
+	  LOL bastava formattare il testo.
 
 	# Rendere l'array funzionante con numeri di cerchi differeti dal 3, attualmente il 
-	  metodo sarebbe di scambiare 3 con il 2.	
+	  metodo sarebbe di scambiare 3 con il 2.
+	  Riso	
 
 TOFIX:
 	# Praticamente per colpa dello zero l'uno rimane stallato. Devo aggiustare l'algoritmo.
@@ -23,7 +25,7 @@ TOFIX:
 #define DM_STCK 3
 
 // Questa si può cambiare sono i dischi
-#define DM_CLMN 4
+#define DM_CLMN 10
 
 void print(int STCK[][DM_STCK], int DM_S);
 void MOV_PL(int STCK[][DM_STCK], int FROM, int TO, size_t DM_S);
@@ -32,7 +34,7 @@ int CHK_POS_TO(int STCK[][DM_STCK], int N_PL, size_t DM_S);
 int CHK_STK(int STCK[][DM_STCK], int N_PL, size_t DM_S);
 void populate(int STCK[][DM_STCK], int DM_S);
 
-int main(){
+int main(int argc, char *argv[]){
 
 // Posizionati in base all'ordine dell'array
 
@@ -53,14 +55,19 @@ int main(){
 
 	populate(stack, DM_CLMN);
 
-	int mosse = pow(2,DM_CLMN) - 1;
+	long long mosse = (long long)pow(2,DM_CLMN) - 1;
+
+	int RS_1 = 0;
+	int RS_2 = 0;
+
+	puts("### START ###");
 
 	print(stack, DM_STCK);
 
 	for(int cnt = 0; cnt < mosse; cnt++){
 
-		int RS_1 = 0;
-		int RS_2 = 0;
+		RS_1 = 0;
+		RS_2 = 0;
 
 		printf("MOSSA NUMERO: %d\n", 1 + cnt);
 
@@ -72,17 +79,24 @@ int main(){
 				if(RS_1 > RS_2){
 					if(RS_2 == 0){
 					MOV_PL(stack, PL_1, PL_3, DM_CLMN);
+					print(stack, DM_STCK);
+
 					//printf("A --> B");
 					} else {
 						ODINO_0:
 						MOV_PL(stack, PL_3, PL_1, DM_CLMN);
+						print(stack, DM_STCK);
+						continue;
 					//printf("B --> A");
 					}
 				} if(RS_1 < RS_2) {
 					if(RS_1 == 0){
+//						Odino perdonami per questa istruzione
 						goto ODINO_0;
 					}
 					MOV_PL(stack, PL_1, PL_3, DM_CLMN);
+					print(stack, DM_STCK);
+
 				}
 
 			}
@@ -95,18 +109,26 @@ int main(){
 				if(RS_1 > RS_2){
 					if(RS_2 == 0){
 					MOV_PL(stack, PL_1, PL_2, DM_CLMN);
+					print(stack, DM_STCK);
+
 					//printf("A --> B");
 					} else {
 //					Che odino sia con me
 					ODINO_1:
 					MOV_PL(stack, PL_2, PL_1, DM_CLMN);
+					print(stack, DM_STCK);
+
+					continue;
 					//printf("B --> A");
 					}
 				} else {
 					if(RS_1 == 0){
+//						Odino perdonami per questa istruzione
 						goto ODINO_1;
 					}
 					MOV_PL(stack, PL_1, PL_2, DM_CLMN);
+					print(stack, DM_STCK);
+
 				}
 		}
 
@@ -118,26 +140,31 @@ int main(){
 				if(RS_1 > RS_2){
 					if(RS_2 == 0){
 					MOV_PL(stack, PL_2, PL_3, DM_CLMN);
+					print(stack, DM_STCK);
+
 					//printf("A --> B");
 					} else {
 					ODINO_2:
 					MOV_PL(stack, PL_3, PL_2, DM_CLMN);
+					print(stack, DM_STCK);
+
+					continue;
 					//printf("B --> A");
 					}
 				} else {
 					if(RS_1 == 0){
+//						Odino perdonami per questa istruzione
 						goto ODINO_2;
 					}
 					MOV_PL(stack, PL_2, PL_3, DM_CLMN);
+					print(stack, DM_STCK);
+
 				}
 		}
 
-			RS_1 = 0;
-			RS_2 = 0;
-
-			print(stack, DM_STCK);
-
 	}
+
+	puts("### END ###");		
 
 
 	return 0;
@@ -162,7 +189,12 @@ void populate(int STCK[][DM_STCK], int DM_S){
 void print(int STCK[][DM_STCK], int DM_S){
 	for(int colonne = 0; colonne < DM_CLMN; colonne++){
 		for(int righe = 0; righe < DM_STCK; righe++){
-			printf("%d ", STCK[colonne][righe]);
+
+			if(STCK[colonne][righe] == 0){
+				printf("|   |");
+			}else{
+				printf("| %d |", STCK[colonne][righe]);
+			}
 		}
 		puts("\n");
 	}
