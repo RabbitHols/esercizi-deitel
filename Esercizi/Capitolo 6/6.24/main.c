@@ -34,7 +34,6 @@ int main(int argc, char const *argv[])
 	srand(time(NULL));
 
 	floor_Board[X][Y] = 1;
-	
 /**
 	decisioni();
 **/
