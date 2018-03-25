@@ -1,5 +1,8 @@
 // C program for Knight Tour problem
 #include<stdio.h>
+#include<stdbool.h>
+#include<unistd.h>
+
 #define N 8
  
 int solveKTUtil(int x, int y, int movei, int sol[N][N],
@@ -15,10 +18,12 @@ bool isSafe(int x, int y, int sol[N][N])
  
 /* A utility function to print solution matrix sol[N][N] */
 void printSolution(int sol[N][N])
-{
-    for (int x = 0; x < N; x++)
+{   
+    system("clear");
+    int x,y;
+    for (x = 0; x < N; x++)
     {
-        for (int y = 0; y < N; y++)
+        for (y = 0; y < N; y++)
             printf(" %2d ", sol[x][y]);
         printf("\n");
     }
@@ -32,12 +37,13 @@ void printSolution(int sol[N][N])
    Please note that there may be more than one solutions,
    this function prints one of the feasible solutions.  */
 bool solveKT()
-{
+{   
     int sol[N][N];
  
     /* Initialization of solution matrix */
-    for (int x = 0; x < N; x++)
-        for (int y = 0; y < N; y++)
+    int x,y;
+    for (x = 0; x < N; x++)
+        for (y = 0; y < N; y++)
             sol[x][y] = -1;
  
     /* xMove[] and yMove[] define next move of Knight.
@@ -67,6 +73,9 @@ bool solveKT()
 int solveKTUtil(int x, int y, int movei, int sol[N][N],
                 int xMove[N], int yMove[N])
 {
+    
+    //printSolution(sol);
+    //sleep(1);
    int k, next_x, next_y;
    if (movei == N*N)
        return true;
