@@ -57,7 +57,7 @@ int main()
 
 bool euristicMove(int x, int y, int stats)
 {
-    iterazioni++; // Lo uso per contare le volte che la funzione
+    iterazioni++; // Lo uso per contare la chiamata ricorsiva
     
     int p_x;
     int p_y;
@@ -94,32 +94,36 @@ bool euristicMove(int x, int y, int stats)
         }
     }
     
-    /*
-        Riordina l'array dal più piccolo al più grande e anche i movimenti 
-        in base ai valori. L'algoritmo di riordinamente è un semplice bubble sort
-    */
 
-    int c_1, c_2; // Contatori
-    for(c_1 = 0; c_1 < N; c_1++){
-        for(c_2 = 0; c_2 < N - 1; c_2++)
+    /*
+    Riordina l'array dal più piccolo al più grande e anche i movimenti 
+    in base ai valori. L'algoritmo di riordinamente è: insert sort
+    */
+    
+    int temp;
+    int rec;
+    int contatore;
+  
+    for(contatore = 0; contatore < N - 1; contatore++)
+    {
+        if(m_possibili[contatore] > m_possibili[contatore + 1])
         {
-            if(m_possibili[c_2] > m_possibili[c_2 + 1])
+            rec = contatore + 1;
+            while(rec != 0 && m_possibili[rec] < m_possibili[rec - 1])
             {
-                /* Riordino dal valore più piccolo */
-                int temp;
-                temp = m_possibili[c_2];
-                m_possibili[c_2] = m_possibili[c_2 + 1];
-                m_possibili[c_2 + 1] = temp;
+                temp = m_possibili[rec];
+                m_possibili[rec] = m_possibili[rec - 1];
+                m_possibili[rec - 1] = temp;
                 
-                /* Il tutto viene riflesso anche sui movimenti*/
-                
-                temp = moves[c_2];
-                moves[c_2] = moves[c_2 + 1];
-                moves[c_2 + 1] = temp;
-                
-            }
+                temp = moves[rec];
+                moves[rec] = moves[rec - 1];
+                moves[rec - 1] = temp;
+                       
+                rec--;
+             }
         }
     }
+  
 
 
     // Da qui in poi richiamo la funzione in modo ricorsivo e uso il backtracking
