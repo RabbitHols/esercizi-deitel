@@ -1,120 +1,123 @@
+/*
+Approccio brutale del salto del cavallo
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
 #define N 8
 
+int xMove[8] = {  2, 1, -1, -2, -2, -1,  1,  2 };
+int yMove[8] = {  1, 2,  2,  1, -1, -2, -2, -1 };
 int board[N][N] = {{0}};
-int queen[N] = {0};
 
-void f_r();
-void p_r();
-int autoMove();
+unsigned long long static cycles = 0;
 
-bool iSafe(int c_q, int clm);
+/*Intestazioni funzioni*/
+void fillArray      ();
+void printBoard     ();
 
-/*
+bool isLegal        (int x, int y);
 
-[Q][ ][ ][ ][ ][ ][ ][ ]
-[ ][ ][Q][ ][ ][ ][ ][ ]
-[Q][ ][ ][ ][ ][ ][ ][ ]
-[ ][ ][ ][ ][ ][ ][ ][ ]
-[ ][ ][ ][ ][ ][ ][ ][ ]
-[ ][ ][ ][ ][ ][ ][ ][ ]
-[ ][ ][ ][ ][ ][ ][ ][ ]
-[ ][ ][ ][ ][ ][ ][ ][ ]
-
-*/
-
+int  autoMove       (int x, int y, int moveK);
 
 int main()
 {
-    int val = 0;
-    board[0][val] = 1;
-    queen[0] = val; 
+    int pos_x;
+    int pos_y;
+    int moveK;
     
-    autoMove(1);
-
-    p_r();
-   
+    fillArray();
     
+    /*Si parte dalla posizione 0, movek traccia il numero della mossa*/
+    board[0][0]     = 0; 
+    pos_x           = 0;
+    pos_y           = 0;
+    moveK           = 1;
+    
+    /*Mi scorro tutte le mosse possibili*/
+    
+    autoMove(pos_x, pos_y, moveK);
+    printBoard();
     return 0;
 }
 
-int autoMove(int c_q)
+int autoMove(int x, int y, int moveK)
 {
+    cycles = cycles + 1;
     
-    if(c_q == 8)
+    int n_x;
+    int n_y;
+    
+    if(moveK == N*N)
     {
         return true;
     }
-    // c_q = 1
-    int cnt;
-    for(cnt = 0; cnt < N; cnt++)
+    
+    /*Provo tutte le possibili combinazioni delle mosse */
+    
+    int k;
+    for(k = 0; k < N; k++)
     {
-        queen[c_q] = cnt;
-        if(iSafe(c_q, cnt) == true )
+        n_x = x + xMove[k];
+        n_y = y + yMove[k];
+        
+        if( isLegal(n_x, n_y) )
         {
-            board[c_q][cnt] = 1;
-            if(autoMove(c_q + 1) == true)
+            board[n_x][n_y] = moveK;
+            if( autoMove(n_x, n_y, moveK + 1) == true )
             {
                 return true;
             }
-            else 
+            else
             {
-                board[c_q][cnt] = 0;
-            }
-        }
+                board[n_x][n_y] = -1; // Backtracking
+            }        
+        } 
     }
     
     return false;
 }
 
-bool iSafe(int c_q, int clm)
+bool isLegal(int x, int y)
 {
-    
-    int cnt;
-    for(cnt = 0; cnt < c_q; cnt++)
-    {
-        if( clm == queen[cnt] || abs(clm - queen[cnt]) == abs(c_q - cnt) ){
-            break;
-        }
-        
-        if(cnt == c_q - 1)
-        {
-            return true;
-        }
-        
-    }
-    
-    return false;
-    
+    return ( x >= 0 && x < N && y >= 0 && y < N && board[x][y] == -1) ? true : false;
 }
 
-void f_r()
+void printBoard()
 {
-    int k,j;
-    for(k = 0; k < N; k++)
-    {
-        for(j = 0; k < N; j++)
-        {
-            board[k][j] = 0x0;
-        }
-    }    
-}
-
-void p_r()
-{
+    system("clear");
+    puts("\n");
     
-    puts("");
-    int k,j;
-    for(k = 0; k < N; k++)
+    int x;
+    int y;
+    for(x = 0; x < N; x++)
     {
-        for(j = 0; j < N; j++)
+        for(y = 0; y < N; y++)
         {
-            printf( board[k][j] ? "[Q]" : "[ ]" );
+            printf(board[x][y] == -1 ? "[  ]" : "[%02d]", board[x][y]);
         }
         puts("");
     }
-    puts("");
+    
+    printf("\nNUMERO DI CICLI ESEGUITI: %llu\n", cycles);
+    
+    puts("\n");
+    
+    return;
 }
+
+void fillArray()
+{
+    int x;
+    int y;
+    for(x = 0; x < N; x++)
+    {
+        for(y = 0; y < N; y++)
+        {
+            board[x][y] = -1;
+        }
+    }
+}
+
