@@ -13,41 +13,27 @@ int queen[N] = {0};
 
 void f_r();
 void p_r();
+
 int autoMove();
 
 bool iSafe(int c_q, int clm);
-
-/*
-
-[Q][ ][ ][ ][ ][ ][ ][ ]
-[ ][ ][Q][ ][ ][ ][ ][ ]
-[Q][ ][ ][ ][ ][ ][ ][ ]
-[ ][ ][ ][ ][ ][ ][ ][ ]
-[ ][ ][ ][ ][ ][ ][ ][ ]
-[ ][ ][ ][ ][ ][ ][ ][ ]
-[ ][ ][ ][ ][ ][ ][ ][ ]
-[ ][ ][ ][ ][ ][ ][ ][ ]
-
-*/
-
 
 int main()
 {
     int val = 0;
     board[0][val] = 1;
     queen[0] = val; 
-    
+
     autoMove(1);
 
     p_r();
-   
-    
+
     return 0;
 }
 
 int autoMove(int c_q)
 {
-    
+ 
     if(c_q == 8)
     {
         return true;
@@ -64,35 +50,28 @@ int autoMove(int c_q)
             {
                 return true;
             }
-            else 
+            else
             {
                 board[c_q][cnt] = 0;
             }
         }
     }
-    
+
     return false;
 }
 
 bool iSafe(int c_q, int clm)
 {
-    
+
     int cnt;
     for(cnt = 0; cnt < c_q; cnt++)
     {
         if( clm == queen[cnt] || abs(clm - queen[cnt]) == abs(c_q - cnt) ){
-            break;
+            return false;
         }
-        
-        if(cnt == c_q - 1)
-        {
-            return true;
-        }
-        
     }
-    
-    return false;
-    
+
+    return true;
 }
 
 void f_r()
@@ -104,12 +83,11 @@ void f_r()
         {
             board[k][j] = 0x0;
         }
-    }    
+    }
 }
 
 void p_r()
 {
-    
     puts("");
     int k,j;
     for(k = 0; k < N; k++)
