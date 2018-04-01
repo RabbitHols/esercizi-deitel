@@ -2,13 +2,15 @@
 #include <stdbool.h>
 #include <unistd.h>
 
-#define N 8
+#define N 6
 
-void fill(int board[][8], int siz);
-void pboard(int board[][8], int siz);
+void fill(int board[][N], int siz);
+void pboard(int board[][N], int siz);
+bool isValid(int board[][N], int x, int y);
+bool isCircolar(int board[][N], int x, int y);
 
-bool isValid(int board[][8], int x, int y);
-
+int xMove[8] = {  2, 1, -1, -2, -2, -1,  1,  2 };
+int yMove[8] = {  1, 2,  2,  1, -1, -2, -2, -1 };
 
 int main()
 {
@@ -32,10 +34,10 @@ int main()
   
   int check;
   int k = 0; // Contatore
-  while(mov != (N*N) - 1 )
+  while(mov != 35)
   {
 
-    for(; k < N; k++)
+    for(; k < 8; k++)
     {
       
       px = x + xMove[k];
@@ -56,7 +58,7 @@ int main()
         
         x = px;
         y = py;
-        
+   
         break;
       }
       else
@@ -65,10 +67,19 @@ int main()
       }
       
       } // fine for
+      
+    if(mov == 35)
+    {
+     if(isCircolar(board, px, py) == false )
+     {
+        check = 8;
+     }
+     
+    }
+      
     
-
-    
-    if(check == 8){
+    if(check == 8)
+    {
       board[x][y] = -1;
       
       k     = stack[mov][0];
@@ -84,15 +95,35 @@ int main()
       check = 0;
     }
     
+
   } // fine while
   
-
   pboard(board, N);
-  
+     
   return 0;
 }
 
-bool isValid(int board[][8], int x, int y)
+bool isCircolar(int board[][N], int x, int y){
+
+    int p_x;
+    int p_y;
+    
+    int k = 0;
+    for(k = 0; k < 8; k++){
+        
+        p_x = x + xMove[k];
+        p_y = y + yMove[k];
+        
+        if(p_x == 0 && p_y == 0)
+        {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+bool isValid(int board[][N], int x, int y)
 {
   if(x >= 0 && x < N && y >= 0 && y < N && board[x][y] == -1)
   {
@@ -101,7 +132,7 @@ bool isValid(int board[][8], int x, int y)
   return false;
 }
 
-void fill(int board[][8], int siz)
+void fill(int board[][N], int siz)
 {
   int i, k;
   for(i = 0; i < N; i++)
@@ -113,7 +144,7 @@ void fill(int board[][8], int siz)
   }
 }
 
-void pboard(int board[][8], int siz)
+void pboard(int board[][N], int siz)
 {
   system("clear");
   int i, k;
