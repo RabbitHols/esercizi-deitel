@@ -1,102 +1,103 @@
 /*
-Approccio brutale delle 8 regine
+
+8 Regine iterativo
+
 */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <unistd.h>
 
 #define N 8
 
-int board[N][N] = {{0}};
-int queen[N] = {0};
+void pBoard(int arr[][N], int dim);
 
-void f_r();
-void p_r();
+bool iSafe(int arr[][N], int queen[], int siz, int x, int y);
 
-int autoMove();
-
-bool iSafe(int c_q, int clm);
 
 int main()
 {
-    int val = 0;
-    board[0][val] = 1;
-    queen[0] = val; 
-
-    autoMove(1);
-
-    p_r();
-
+    
+    int board[N][N] = { {0} };
+    int queen[N]    = {0};
+    
+    bool lookup = false;
+    
+    int contatore   = 0;
+    int count_q     = 0;
+    
+    
+    pBoard(board, N);
+    
+    while(count_q != 8)
+    {
+        pBoard(board, N);
+        sleep(0);
+        system("clear");
+        
+        for(; contatore <= N; contatore++)
+        {
+            if( iSafe(board, queen, N, contatore, count_q) && contatore < N )
+            {
+                board[count_q][contatore] = 1;
+                queen[count_q] = contatore;
+                count_q++;
+                contatore = 0;
+                break;
+            } else if(contatore >= N)
+            {
+                lookup = true; 
+                break;
+            }
+                
+        }
+    
+        if(lookup == true)
+        {       
+                board[count_q - 1][queen[count_q - 1]] = 0;
+                contatore = queen[count_q - 1] + 1;
+                count_q = count_q - 1;
+                lookup = false;
+                
+        }
+        
+    }
+    
+    
+    pBoard(board, N);
+    
     return 0;
 }
 
-int autoMove(int c_q)
+bool iSafe(int arr[][N], int queen[], int siz, int x, int y)
 {
- 
-    if(c_q == 8)
+    
+    int contatore = y - 1;
+    for(; contatore >= 0; contatore--)
     {
-        return true;
-    }
-    // c_q = 1
-    int cnt;
-    for(cnt = 0; cnt < N; cnt++)
-    {
-        queen[c_q] = cnt;
-        if(iSafe(c_q, cnt) == true )
+        bool isDiagonal = abs(x - queen[contatore]) == abs(y - contatore);
+        if(x == queen[contatore] || isDiagonal == true )
         {
-            board[c_q][cnt] = 1;
-            if(autoMove(c_q + 1) == true)
-            {
-                return true;
-            }
-            else
-            {
-                board[c_q][cnt] = 0;
-            }
-        }
-    }
-
-    return false;
-}
-
-bool iSafe(int c_q, int clm)
-{
-
-    int cnt;
-    for(cnt = 0; cnt < c_q; cnt++)
-    {
-        if( clm == queen[cnt] || abs(clm - queen[cnt]) == abs(c_q - cnt) ){
             return false;
         }
     }
-
+    
     return true;
+    
 }
 
-void f_r()
+void pBoard(int arr[][N], int dim)
 {
-    int k,j;
-    for(k = 0; k < N; k++)
+    int x,y;
+    for(x = 0; x < N; x++)
     {
-        for(j = 0; k < N; j++)
+        for(y = 0; y < N; y++)
         {
-            board[k][j] = 0x0;
-        }
-    }
-}
-
-void p_r()
-{
-    puts("");
-    int k,j;
-    for(k = 0; k < N; k++)
-    {
-        for(j = 0; j < N; j++)
-        {
-            printf( board[k][j] ? "[Q]" : "[ ]" );
+            printf( arr[x][y] ? "[Q]" : "[ ]" );
         }
         puts("");
     }
-    puts("");
+      
+    return;
 }
