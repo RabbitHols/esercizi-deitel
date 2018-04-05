@@ -42,10 +42,11 @@ bool control(char *stringa)
         }
     }
     
-    str[c2 + 1] = '\0';
+    str[c2] = '\0';
     str = (char *) realloc(str, c2 + 1);
     
-    printf("PRIMA : %s\n", stringa);
+    
+    printf("\nPRIMA : %s\n", stringa);
     printf("DOPO : %s\n", str);
 
     return isPalindrome(str, c2);
