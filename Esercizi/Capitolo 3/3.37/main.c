@@ -11,7 +11,8 @@ int main(){
 	int cont;
 
 	for(cont = 0; cont < 3000000; cont++){
-		(cont % 1000000 != 0) ?:  printf("%d\n", cont);		
+		if(cont % 1000000 != 0)
+			printf("%d\n", cont);		
 	}	
 
 

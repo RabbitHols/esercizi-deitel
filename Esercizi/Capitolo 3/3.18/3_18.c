@@ -41,6 +41,7 @@ int main(int argc, char const *argv[])
 
 	float nuovoSaldo = bilancio + totaleArticoli - totaleCrediti;
 
-	(nuovoSaldo < limiteCredito) ?: printf("\tLimite credito superato\t\n \tAccount: %d\n\tLimite Credito: %.2f\n\tBilancio: %.2f\n", numeroConto, limiteCredito, nuovoSaldo);
+	if(nuovoSaldo < limiteCredito) 
+		printf("\tLimite credito superato\t\n \tAccount: %d\n\tLimite Credito: %.2f\n\tBilancio: %.2f\n", numeroConto, limiteCredito, nuovoSaldo);
 	return 0;
 }

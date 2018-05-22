@@ -8,7 +8,7 @@ calcolare quadrato e cubo
 
 int main(int argc, char const *argv[])
 {
-	for (int i = 0; i < 11 ++i)
+	for (int i = 0; i < 11; ++i)
 	{	printf("%d \t", i );
 		printf("%d \t ",i * i);
 		printf("%d \t\n", i * i * i);

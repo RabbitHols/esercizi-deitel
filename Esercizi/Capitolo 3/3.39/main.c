@@ -12,7 +12,8 @@ int main(){
 
 	while(numero != 0){
 		resto = numero % 10;
-		(resto != 7) ?: numSev++;
+		if(resto != 7) 
+			numSev++;
 		numero = numero / 10; 
 	}	
 
