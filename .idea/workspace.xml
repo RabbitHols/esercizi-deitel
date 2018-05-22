@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="false">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cadc723d-331c-466a-a1f2-ec1c1010a631" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Esercizi/Capitolo 7/7.13/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Esercizi/Capitolo 7/7.13/main.c" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="main.c" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Esercizi/Capitolo 7/7.13/main.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="434">
+              <caret line="242" column="25" lean-forward="true" selection-start-line="242" selection-start-column="25" selection-end-line="242" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>funzione_1</find>
+      <find>deal</find>
+      <find>deakPokerHand</find>
+      <find>dealPokerHand</find>
+      <find>ordine</find>
+      <find>sort</find>
+      <find>arr</find>
+      <find>mano</find>
+      <find>sortOrder[cnt]</find>
+      <find>const</find>
+      <find>manoOrdinata</find>
+      <find>sortMano</find>
+      <find>scala</find>
+      <find>ordina</find>
+      <find>printf</find>
+      <find>regine</find>
+      <find>Regin</find>
+      <find>colore</find>
+      <find>Nove</find>
+      <find>sortma</find>
+      <find>bubble</find>
+      <find>sortin</find>
+      <find>manoAttuale</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>f_1</replace>
+      <replace>f_2</replace>
+      <replace>deakPokerHand</replace>
+      <replace>dealPokerHand</replace>
+      <replace>deal</replace>
+      <replace>hand</replace>
+      <replace>manoAttuale</replace>
+      <replace>sortOrder[cnt][0]</replace>
+      <replace>sortOrder</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="RabbitHols &lt;rob.turturica@stud.uniroma3.it&gt;" />
+        <option value="Robert Turturica &lt;rob.turturica@stud.uniroma3.it&gt;" />
+      </list>
+    </option>
+    <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Esercizi/Capitolo 7/ptr/main.c" />
+        <option value="$PROJECT_DIR$/Esercizi/Capitolo 7/7.12/main.c" />
+        <option value="$PROJECT_DIR$/Esercizi/Capitolo 5/5.40/main.c" />
+        <option value="$PROJECT_DIR$/Esercizi/Capitolo 7/7.13/main.c" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="x" value="11" />
+    <option name="y" value="-22" />
+    <option name="width" value="1340" />
+    <option name="height" value="698" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="esercizi-deitel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="esercizi-deitel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="esercizi-deitel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="esercizi-deitel" type="462c0819:PsiDirectoryNode" />
+              <item name="Esercizi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="esercizi-deitel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="esercizi-deitel" type="462c0819:PsiDirectoryNode" />
+              <item name="Esercizi" type="462c0819:PsiDirectoryNode" />
+              <item name="Capitolo 7" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="esercizi-deitel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="esercizi-deitel" type="462c0819:PsiDirectoryNode" />
+              <item name="Esercizi" type="462c0819:PsiDirectoryNode" />
+              <item name="Capitolo 7" type="462c0819:PsiDirectoryNode" />
+              <item name="7.12" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="esercizi-deitel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="esercizi-deitel" type="462c0819:PsiDirectoryNode" />
+              <item name="Esercizi" type="462c0819:PsiDirectoryNode" />
+              <item name="Capitolo 7" type="462c0819:PsiDirectoryNode" />
+              <item name="7.13" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ToolWindowTerminal.ShowToolbar" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.C/C++" />
+    <property name="settings.editor.splitter.proportion" value="0.23414634" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="-g" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" EXPLICIT_BUILD_TARGET_NAME="all" />
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cadc723d-331c-466a-a1f2-ec1c1010a631" name="Default" comment="" />
+      <created>1526600929336</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1526600929336</updated>
+      <workItem from="1526600930455" duration="6000" />
+      <workItem from="1526601127586" duration="1654000" />
+      <workItem from="1526603470205" duration="4026000" />
+      <workItem from="1526618613851" duration="7486000" />
+      <workItem from="1526655696053" duration="18125000" />
+      <workItem from="1526753947350" duration="71000" />
+      <workItem from="1526827965622" duration="20628000" />
+      <workItem from="1526907311944" duration="11503000" />
+      <workItem from="1526928093381" duration="7094000" />
+      <workItem from="1526940398509" duration="5260000" />
+      <workItem from="1526997371179" duration="1376000" />
+    </task>
+    <task id="LOCAL-00001" summary="Pokwer">
+      <created>1526753967986</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1526753967986</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Rifattorizzato il codice, completato l'esercizio forse è un pò da migliorare ma come base va bene a mio parere.">
+      <created>1526935365901</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1526935365901</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Rifattorizzato il codice, completato l'esercizio forse è un pò da migliorare ma come base va bene a mio parere.">
+      <created>1526935803986</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1526935803986</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Nuovo esercizio">
+      <created>1526935947059</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1526935947059</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="77229000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1360" height="768" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.36458334" />
+      <window_info anchor="bottom" id="CMake" order="10" weight="0.48046875" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" x="374" y="58" width="634" height="749" id="Terminal" order="3" side_tool="true" weight="0.7470588" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.3294271" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="bottom" id="CMake" order="11" visible="true" weight="0.48121387" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.36560693" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" x="374" y="58" width="634" height="749" id="Terminal" order="7" side_tool="true" weight="0.7367647" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.3294271" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Pokwer" />
+    <MESSAGE value="Rifattorizzato il codice, completato l'esercizio forse è un pò da migliorare ma come base va bene a mio parere." />
+    <MESSAGE value="Nuovo esercizio" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nuovo esercizio" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Esercizi/Capitolo 7/7.12/main.c</url>
+          <line>106</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Esercizi/Capitolo 7/7.12/main.c</url>
+          <line>133</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Esercizi/Capitolo 7/7.12/main.c</url>
+          <line>255</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Esercizi/Capitolo 7/7.13/main.c</url>
+          <line>143</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="9" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Esercizi/Capitolo 7/7.13/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2336">
+          <caret line="146" column="43" lean-forward="true" selection-start-line="146" selection-start-column="43" selection-end-line="146" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Esercizi/Capitolo 7/7.12/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5392">
+          <caret line="337" lean-forward="true" selection-start-line="337" selection-end-line="337" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Esercizi/Capitolo 7/7.12/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3744">
+          <caret line="234" column="39" selection-start-line="234" selection-start-column="39" selection-end-line="234" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Esercizi/Capitolo 7/7.12/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4160">
+          <caret line="260" column="43" selection-start-line="260" selection-start-column="43" selection-end-line="260" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Esercizi/Capitolo 7/7.12/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2400">
+          <caret line="150" column="5" lean-forward="true" selection-start-line="150" selection-start-column="5" selection-end-line="150" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Esercizi/Capitolo 7/7.12/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2576">
+          <caret line="161" column="17" lean-forward="true" selection-start-line="161" selection-start-column="17" selection-end-line="161" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Esercizi/Capitolo 7/7.12/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="832">
+          <caret line="52" column="11" lean-forward="true" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Esercizi/Capitolo 7/ptr/main.c" />
+    <entry file="file://$PROJECT_DIR$/Esercizi/Capitolo 7/ptr/main.c" />
+    <entry file="file://$PROJECT_DIR$/Esercizi/Capitolo 7/ptr/main.c" />
+    <entry file="file://$PROJECT_DIR$/Esercizi/Capitolo 5/5.40/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="221" column="23" lean-forward="true" selection-start-line="221" selection-start-column="23" selection-end-line="221" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Esercizi/Capitolo 7/7.12/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="328" column="13" lean-forward="true" selection-end-line="337" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Esercizi/Capitolo 7/7.13/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="242" column="25" lean-forward="true" selection-start-line="242" selection-start-column="25" selection-end-line="242" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
