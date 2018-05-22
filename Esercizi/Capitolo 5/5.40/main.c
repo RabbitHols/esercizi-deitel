@@ -4,7 +4,6 @@ Algoritmo iterativo per risolvere le torri di hanoi
 
 L'algoritmo funziona perfettamente con 3 torri, ma è da perfezionare con le 4
 
-TODO: 
 	# Cercare di sbarazzarci dello zero che ci rovina l'intero array, dovrei farlo di char
 	  e usare gli spazi al posto degli zero. ! LA VEDO DURA
 	  LOL bastava formattare il testo.

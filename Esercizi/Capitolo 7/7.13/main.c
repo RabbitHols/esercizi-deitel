@@ -4,7 +4,6 @@
 
 // Esercizio 7.13 Mano migliore
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -13,12 +12,13 @@
 
 //prototipi
 
-bool scala          ( char * [][2], int [][2]);
-bool poker          ( char * [][2], int [][2]);
-bool colore         ( char * [][2], int [][2]);
-bool tris           ( char * [][2], int [][2]);
-bool doppiaCoppia   ( char * [][2], int [][2]);
-bool coppia         ( char * [][2], int [][2]);
+
+bool poker          ( char * [][2], int [][2], int);
+bool colore         ( char * [][2], int [][2], int);
+bool tris           ( char * [][2], int [][2], int);
+bool scala          ( char * [][2], int [][2], int);
+bool doppiaCoppia   ( char * [][2], int [][2], int);
+bool coppia         ( char * [][2], int [][2], int);
 
 void shuffle        (int [][13]);
 void sortMano       ( char * [][2],char * [], int [][2]);
@@ -104,14 +104,15 @@ void deal( int   wDeck[][13],
 
     return;
 }
-// TODO: Rifattorizzare il codice suddividere in 2 mani diverse. Rendere scalabile il gioco ha più giocatori.
+// TODO: Rifattorizzare il codice suddividere in 2 mani diverse. Rendere scalabile il gioco a più giocatori.
 void manoAttuale( int   wDeck[][13],
                   char *wFace[],
                   char *wSuit[],
                   int hand[][2]){
 
     bool (*check[6]) (char *manoAttuale[][2],
-                      int sortOrder[][2]) = {  poker, colore, scala, tris, doppiaCoppia, coppia};
+                      int sortOrder[][2],
+                      int maxValore) = {  poker, colore, scala, tris, doppiaCoppia, coppia};
 
     system("cls");
 
@@ -124,6 +125,17 @@ void manoAttuale( int   wDeck[][13],
 
     int risultato_Mano_1;
     int risultato_Mano_2;
+
+   
+/*    
+    La variabile maxValore serve a immagazzina il valore della carta che è coppia per confrontarla
+    con le altre mani in caso di parità
+
+    TODO: Inserire valore coppia dentro la matrice, creare una matrice [][][]
+
+ */
+
+    int maxValore;
 
     for(int x = 0; x < 5; x++)
     {
@@ -151,7 +163,7 @@ void manoAttuale( int   wDeck[][13],
     for(int x = 0; x < 6; x++)
     {
         int key = 0;
-        if( (*check[x]) (manoAttuale, sortOrder) )
+        if( (*check[x]) (manoAttuale, sortOrder, maxValore) )
         {
             switch(x)
             {
@@ -204,7 +216,7 @@ void manoAttuale( int   wDeck[][13],
     for(int x = 0; x < 6; x++)
     {
         int key = 0;
-        if( (*check[x]) (manoDue, sortOrder) )
+        if( (*check[x]) (manoDue, sortOrder, maxValore) )
         {
             switch(x)
             {
@@ -234,6 +246,7 @@ void manoAttuale( int   wDeck[][13],
     }
 
 // TODO: in caso di parità vedere chi la la mano più alta
+ 
     if(risultato_Mano_1 < risultato_Mano_2)
     {
         printf("MANO 1 HA VINTO\n");
@@ -294,7 +307,7 @@ void sortMano(char * manoAttuale[][2], char *wFace[], int sortOrder[][2])
  * Scala controlla se la carta successiva -1 è uguale a quella precedente
  * se cosi non è allora non è scala
  */
-bool scala(char * manoAttuale[][2], int sortOrder[][2])
+bool scala(char * manoAttuale[][2], int sortOrder[][2], int maxValore)
 {
     for(int k = 0; k < 4; k++)
     {
@@ -307,7 +320,7 @@ bool scala(char * manoAttuale[][2], int sortOrder[][2])
     return true;
 }
 
-bool poker(char * manoAttuale[][2], int sortOrder[][2])
+bool poker(char * manoAttuale[][2], int sortOrder[][2], int maxValore)
 {
     int carta_1 = sortOrder[0][0];
     int carta_2 = sortOrder[1][0];
@@ -329,7 +342,7 @@ bool poker(char * manoAttuale[][2], int sortOrder[][2])
  * i valori siano zero.
  * */
 
-bool colore(char * manoAttuale[][2], int sortOrder[][2])
+bool colore(char * manoAttuale[][2], int sortOrder[][2], int maxValore)
 {
     int colore_1 = strcmp(manoAttuale[0][1], manoAttuale[1][1]);
     int colore_2 = strcmp(manoAttuale[1][1], manoAttuale[2][1]);
@@ -343,7 +356,7 @@ bool colore(char * manoAttuale[][2], int sortOrder[][2])
     return false;
 }
 
-bool tris(char * manoAttuale[][2], int sortOrder[][2]){
+bool tris(char * manoAttuale[][2], int sortOrder[][2], int maxValore){
 
     int arr[5] = {sortOrder[0][0],sortOrder[1][0],
                   sortOrder[2][0],sortOrder[3][0],
@@ -367,7 +380,7 @@ bool tris(char * manoAttuale[][2], int sortOrder[][2]){
     return false;
 }
 
-bool doppiaCoppia(char * manoAttuale[][2], int sortOrder[][2])
+bool doppiaCoppia(char * manoAttuale[][2], int sortOrder[][2], int maxValore)
 {
     int arr[5] = {sortOrder[0][0],sortOrder[1][0],
                   sortOrder[2][0],sortOrder[3][0],
@@ -389,7 +402,8 @@ bool doppiaCoppia(char * manoAttuale[][2], int sortOrder[][2])
     return false;
 }
 
-bool coppia(char * manoAttuale[][2], int sortOrder[][2])
+
+bool coppia(char * manoAttuale[][2], int sortOrder[][2], int maxValore)
 {
     int arr[5] = {sortOrder[0][0],sortOrder[1][0],
                   sortOrder[2][0],sortOrder[3][0],
@@ -399,15 +413,14 @@ bool coppia(char * manoAttuale[][2], int sortOrder[][2])
         for(int c = f + 1; c < 5; c++)
         {
             if(arr[f] == arr[c])
-            {
+            {   
                 return true;
             }
         }
     }
-
-    // NGH
-
+     
     return false;
-}
+
+    
 }
 
