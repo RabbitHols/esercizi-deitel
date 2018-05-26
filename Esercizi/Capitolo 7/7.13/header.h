@@ -18,24 +18,24 @@
 
 //prototipi
 
-bool doppiaCoppia   (char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
-bool poker          (char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
-bool colore         (char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
-bool tris           (char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
-bool scala          (char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
-bool coppia         (char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
-bool cartaAlta      (char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
+bool doppiaCoppia(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
+bool poker(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
+bool colore(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
+bool tris(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
+bool scala(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
+bool coppia(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
+bool cartaAlta(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
 
-void shuffle        (int[][13]);
-void deal           (int (*)[], char *[], char *[]);
+void shuffle(int[][13]);
+void deal(int (*)[], char *[], char *[]);
 
-void sortMani       (char * [NPLAYER][ROW][CLM], char *[], int[NPLAYER][ROW][CLM]);
-void mostraMano     (char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM]);
-void manoGiocatori  (int (*)[], char *[], char *[], int[][2]);
-void giveCardsCoord (char * [NPLAYER][ROW][CLM], int[][CLM], char *[], char *[]);
-void controlloMano  (char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM]);
+void sortMani(char * [NPLAYER][ROW][CLM], char *[], int[NPLAYER][ROW][CLM]);
+void mostraMano(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM]);
+void manoGiocatori(int (*)[], char *[], char *[], int[][2]);
+void giveCardsCoord(char * [NPLAYER][ROW][CLM], int[][CLM], char *[], char *[]);
+void controlloMano(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM]);
 
-int cartaMaggiore   (int [NPLAYER][ROW][CLM], int, int, int);
+int cartaMaggiore(int[NPLAYER][ROW][CLM], int, int, int);
 
 // Mescola carte
 void shuffle(int wDeck[][13])
@@ -122,8 +122,10 @@ void controlloMano(char *manoGiocatore[NPLAYER][ROW][CLM], int sortOrder[NPLAYER
                      int idPlayer) = {poker, colore, scala, tris, doppiaCoppia, coppia, cartaAlta};
 
     int combinazioneMaggiore[NPLAYER][2];
-    puts("\n\n");
-
+    
+    system("cls"); 
+    puts("\n");
+   
     int key = 0;
     for (int tab = 0; tab < NPLAYER; tab++)
     {
@@ -194,6 +196,14 @@ void controlloMano(char *manoGiocatore[NPLAYER][ROW][CLM], int sortOrder[NPLAYER
         puts("");
     }
 
+
+     // Devo pulire il terminale per vedere se la mano è stata sortata bene per dio
+ 
+    mostraMano(manoGiocatore, sortOrder);
+    puts("\n");
+
+
+
     //TESTING: Implementazione incompleta, leggere la descrizione sotto per capire cosa si sta facendo
 
     //TODO: Scelta vincitore
@@ -210,47 +220,45 @@ void controlloMano(char *manoGiocatore[NPLAYER][ROW][CLM], int sortOrder[NPLAYER
         dal più importante al meno
     */
 
+
     int vincitore[1][2];
     vincitore[0][0] = combinazioneMaggiore[0][0];
     vincitore[0][1] = combinazioneMaggiore[0][1];
 
-    for(int n = 1; n < NPLAYER; n++)
+    for (int n = 1; n < NPLAYER; n++)
     {
-        if( vincitore[0][0] > combinazioneMaggiore[n][0] )
+        if (vincitore[0][0] > combinazioneMaggiore[n][0])
         {
             vincitore[0][0] = combinazioneMaggiore[n][0];
             vincitore[0][1] = combinazioneMaggiore[n][1];
             continue;
         }
 
-         if( vincitore[0][0] == combinazioneMaggiore[n][0] && ( vincitore[0][0] == 6 || vincitore[0][0] == 5  ) )
-         {
-             int winner = cartaMaggiore(sortOrder, vincitore[0][1], n, 0);
-             if(winner == combinazioneMaggiore[n][1])
-             {
-                 vincitore[0][0] = combinazioneMaggiore[n][0];
-                 vincitore[0][1] = combinazioneMaggiore[n][1];
-             }
-
-         }
-
+        if (vincitore[0][0] == combinazioneMaggiore[n][0] && (vincitore[0][0] == 6 || vincitore[0][0] == 5 || vincitore[0][0] == 4 ))
+        {
+            int winner = cartaMaggiore(sortOrder, vincitore[0][1], n, 0);
+            if (winner == combinazioneMaggiore[n][1])
+            {
+                vincitore[0][0] = combinazioneMaggiore[n][0];
+                vincitore[0][1] = combinazioneMaggiore[n][1];
+            }
+        }
     }
 
     printf("Il vincitore e' il giocatore nr %d", vincitore[0][1] + 1);
-
 }
 
 int cartaMaggiore(int sortOrder[NPLAYER][ROW][CLM],
-                  int idPlayer_1, 
+                  int idPlayer_1,
                   int idPlayer_2,
                   int cont)
 {
-    if(cont == 4)
+    if (cont == 4)
     {
-        return (sortOrder[idPlayer_1][cont][0] > sortOrder[idPlayer_2][cont][0]) ? idPlayer_1 : idPlayer_2; 
+        return (sortOrder[idPlayer_1][cont][0] > sortOrder[idPlayer_2][cont][0]) ? idPlayer_1 : idPlayer_2;
     }
 
-    if(sortOrder[idPlayer_1][cont][0] == sortOrder[idPlayer_2][cont][0])
+    if (sortOrder[idPlayer_1][cont][0] == sortOrder[idPlayer_2][cont][0])
     {
         return cartaMaggiore(sortOrder, idPlayer_1, idPlayer_2, cont + 1);
     }
@@ -411,25 +419,108 @@ bool tris(char *manoGiocatori[NPLAYER][ROW][CLM], int sortOrder[NPLAYER][ROW][CL
 
 bool doppiaCoppia(char *manoGiocatori[NPLAYER][ROW][CLM], int sortOrder[NPLAYER][ROW][CLM], int idPlayer)
 {
-    int arr[5] = {sortOrder[idPlayer][0][0], sortOrder[idPlayer][1][0],
-                  sortOrder[idPlayer][2][0], sortOrder[idPlayer][3][0],
-                  sortOrder[idPlayer][4][0]};
 
+/* 
+    TODO: Aggiustare assolutamente la logica dietro a doppia coppia, è orrenda davvero. Aggiustala.
+    Comunque il funzionamento base è questo clono l'array per comodità poi controllo con delle if se il pattern della 
+    doppia coppia ci sta nell'array una volta fatto cio mi trovo i due cloni li piazzo in cima e mi trovo il 4 elemento e lo 
+    piazzo in fondo. Ho dovuto creare 2 array e fare infinito for veramente da ottimizzare fa schifo...
 
-    if (arr[0] != arr[1] && arr[0] != arr[2] && arr[1] == arr[2] && arr[3] == arr[4] && arr[1] != arr[4])
+ */
+
+    int arr[5][2];
+
+    for(int n = 0; n < 5; n++)
     {
+            arr[n][0] = sortOrder[idPlayer][n][0];
+            arr[n][1] = sortOrder[idPlayer][n][1];
+     
+    }
+
+    int check = 0;
+
+    if (arr[0][0] != arr[1][0] && arr[0][0] != arr[2][0] && arr[1][0] == arr[2][0] && arr[3][0] == arr[4][0] && arr[1][0] != arr[4][0])
+    {
+        check = true;
+    }
+
+    if (arr[0][0] == arr[1][0] && arr[1][0] != arr[2][0] && arr[2][0] != arr[3][0] && arr[3][0] == arr[4][0] && arr[4][0] != arr[0][0])
+    {
+        check = true;
+    }
+
+    if (arr[0][0] == arr[1][0] && arr[2][0] == arr[3][0] && arr[4][0] != arr[0][0] && arr[4][0] != arr[2][0] && arr[2][0] != arr[1][0])
+    {
+        check = true;
+    }
+
+    if (check)
+    {
+        int tmp_1 = 0;
+        int tmp_2 = 0;
+        int tmp_3 = 0;
+        int tmp_4 = 0;
+
+        int n = 0;
+        while (check)
+        {
+            for (int k = n + 1; k < 5; k++)
+            {
+                if (arr[n][0] == arr[k][0])
+                {
+                    tmp_1 = n;
+                    tmp_2 = k;
+                    check = 0;
+                }
+            }
+            n++;
+        }
+
+        check = 1;
+        while (check)
+        {
+            for (int k = n + 1; k < 5; k++)
+            {
+                if (arr[n][0] == arr[k][0] && arr[n][0] != arr[tmp_1][0])
+                {
+                    tmp_3 = n;
+                    tmp_4 = k;
+                    check = 0;
+                }
+            }
+            n++;
+        }
+
+        int sir[5][2] = {0};
+
+        sir[0][0] = arr[tmp_4][0];
+        sir[0][1] = arr[tmp_4][1];
+        sir[1][0] = arr[tmp_3][0];
+        sir[1][1] = arr[tmp_3][1];
+        sir[2][0] = arr[tmp_2][0];
+        sir[2][1] = arr[tmp_2][1];
+        sir[3][0] = arr[tmp_1][0];
+        sir[3][1] = arr[tmp_1][1];
+
+        int f;
+        for (int n = 0; n < 5; n++)
+        {
+            if (arr[n][0] != arr[tmp_1][0] && arr[n][0] != arr[tmp_3][0])
+            {
+                sir[4][0] = arr[n][0];
+                sir[4][1] = arr[n][1];
+            }
+        }
+
+        for(int n = 0; n < 5; n++)
+        {
+            sortOrder[idPlayer][n][0] = sir[n][0];
+            sortOrder[idPlayer][n][1] = sir[n][1];
+        }
+
         return true;
     }
 
-    if (arr[0] == arr[1] && arr[1] != arr[2] && arr[2] != arr[3] && arr[3] == arr[4] && arr[4] != arr[0])
-    {
-        return true;
-    }
-
-    if (arr[0] == arr[1] && arr[2] == arr[3] && arr[4] != arr[0] && arr[4] != arr[2] && arr[2] != arr[1])
-    {
-        return true;
-    }
 
     return false;
 }
@@ -445,12 +536,12 @@ bool coppia(char *manoGiocatori[NPLAYER][ROW][CLM], int sortOrder[NPLAYER][ROW][
         for (int c = f + 1; c < 5; c++)
         {
             if (sortOrder[idPlayer][f][0] == sortOrder[idPlayer][c][0])
-            {           
-    /*
+            {
+                /*
                 Se trova una coppia sorta la coppia ai primi 2 posti e il restante dei kicker in ordine decrescente              
     */
 
-                int arr[5][2] = { -1 };
+                int arr[5][2] = {-1};
 
                 arr[0][0] = sortOrder[idPlayer][f][0];
                 arr[0][1] = sortOrder[idPlayer][f][1];
@@ -458,10 +549,11 @@ bool coppia(char *manoGiocatori[NPLAYER][ROW][CLM], int sortOrder[NPLAYER][ROW][
                 arr[1][0] = sortOrder[idPlayer][c][0];
                 arr[1][1] = sortOrder[idPlayer][c][1];
 
-                for(int n = 2, k = 0; n < 5; n++, k++)
+                for (int n = 2, k = 0; n < 5; n++, k++)
                 {
-                    if(sortOrder[idPlayer][k][0] == arr[0][0])
-                    {   k++;
+                    if (sortOrder[idPlayer][k][0] == arr[0][0])
+                    {
+                        k++;
                         n--;
                         continue;
                     }
@@ -472,14 +564,13 @@ bool coppia(char *manoGiocatori[NPLAYER][ROW][CLM], int sortOrder[NPLAYER][ROW][
 
                 temp_1 = arr[2][0];
                 arr[2][0] = arr[4][0];
-                arr[4][0] = temp_1;  
+                arr[4][0] = temp_1;
 
-                
                 temp_2 = arr[2][1];
                 arr[2][1] = arr[4][1];
-                arr[4][1] = temp_2;  
-            
-                for(int n = 0; n < ROW; n++)
+                arr[4][1] = temp_2;
+
+                for (int n = 0; n < ROW; n++)
                 {
                     sortOrder[idPlayer][n][0] = arr[n][0];
                     sortOrder[idPlayer][n][1] = arr[n][1];
@@ -490,7 +581,6 @@ bool coppia(char *manoGiocatori[NPLAYER][ROW][CLM], int sortOrder[NPLAYER][ROW][
         }
     }
 
-    
     return false;
 }
 
@@ -502,8 +592,8 @@ bool cartaAlta(char *manoGiocatori[NPLAYER][ROW][CLM], int sortOrder[NPLAYER][RO
 
     int n = 0;
     int k = 4;
-    while(n != 2)
-    {   
+    while (n != 2)
+    {
 
         temp_1 = sortOrder[idPlayer][n][0];
         temp_2 = sortOrder[idPlayer][n][1];
