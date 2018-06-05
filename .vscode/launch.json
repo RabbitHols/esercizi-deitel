@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "C:/Users/Robert/CLionProjects/esercizi-deitel/Esercizi/Capitolo 7/7.13/main.exe",
+            "program": "C:/Users/Robert/CLionProjects/esercizi-deitel/Esercizi/Capitolo 7/7.14/main.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
