@@ -18,28 +18,47 @@ int main()
     int sortOrder[NPLAYER][ROW][CLM];
     int combinazioneMaggiore[NPLAYER][2];
 
-    shuffle();
-    deal(mazzoCarte);
-    giveCardsCoord(manoGiocatore, mazzoCarte);
-    sortMani(manoGiocatore, sortOrder);
-    controlloMano(manoGiocatore, sortOrder, combinazioneMaggiore);
-    mostraMano(manoGiocatore, sortOrder);
-    vincitore(combinazioneMaggiore, sortOrder);
+    int wins[2] = {0};
 
-    AI_Decision(mazzoCarte, 0, combinazioneMaggiore[0][0]);
+    for (int n = 0, iterazioni = 100; n < iterazioni; n++)
+    {
+        shuffle();
+        deal(mazzoCarte);
+        giveCardsCoord(manoGiocatore, mazzoCarte);
+        sortMani(manoGiocatore, sortOrder);
+        controlloMano(manoGiocatore, sortOrder, combinazioneMaggiore);
+        mostraMano(manoGiocatore, sortOrder);
 
-    giveCardsCoord(manoGiocatore, mazzoCarte);
-    sortMani(manoGiocatore, sortOrder);
-    controlloMano(manoGiocatore, sortOrder, combinazioneMaggiore);
-    mostraMano(manoGiocatore, sortOrder);
-    vincitore(combinazioneMaggiore, sortOrder);
+        if (AI_Decision(mazzoCarte, 0, combinazioneMaggiore[0][0]) == true)
+        {
+            giveCardsCoord(manoGiocatore, mazzoCarte);
+            sortMani(manoGiocatore, sortOrder);
+            controlloMano(manoGiocatore, sortOrder, combinazioneMaggiore);
+            mostraMano(manoGiocatore, sortOrder);
+        }
 
+        switch (vincitore(combinazioneMaggiore, sortOrder))
+        {
+        case 1:
+            wins[0] = wins[0] + 1;
+            break;
 
-    cleaner(deck);
+        case 2:
+            wins[1] = wins[1] + 1;
+            break;
 
+        default:
+            puts("Error");
+            break;
+        }
 
+        cleaner(deck);
+    }
 
+    system("cls");
+
+    printf("Il giocatore 1 ha vinto %d volte\n", wins[0]);
+    printf("Il giocatore 2 ha vinto %d volte ", wins[1]);
 
     return 0;
 }
-

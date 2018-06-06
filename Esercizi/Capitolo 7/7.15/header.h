@@ -13,6 +13,7 @@ char *face[13] = {"Asso", "Due", "Tre", "Quattro",
                   "Cinque", "Sei", "Seven", "Otto",
                   "Nove", "Dieci", "Regina", "Regina", "Re"};
 int deck[4][13] = {0};
+int carteFondo = 51;
 
 //prototipi
 
@@ -25,7 +26,7 @@ bool coppia(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
 bool cartaAlta(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
 
 void scambiaCarte(int[][2], int, int);
-bool AI_Decision(int [][2], int, int);
+void AI_Decision(int[][2], int, int);
 
 int cartaMaggiore(int[NPLAYER][ROW][CLM], int, int, int);
 
@@ -33,11 +34,73 @@ void shuffle();
 void deal();
 void giveCardsCoord(char * [NPLAYER][ROW][CLM], int[][CLM]);
 void sortMani(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM]);
-void controlloMano(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int [][2]);
-int vincitore(int [][2],int [NPLAYER][ROW][CLM]);
+void controlloMano(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int[][2]);
+int vincitore(int[][2], int[NPLAYER][ROW][CLM]);
 
-void mostraMano(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM]);
+void mostraMani(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM]);
 void cleaner(int wDeck[][13]);
+void ManoGiocatore(char * [NPLAYER][ROW][CLM], int[NPLAYER][ROW][CLM], int);
+void scartaCarta(int[][2], int);
+void fflusher(int a);
+
+/* 
+TODO: Giocare contro il computer
+ */
+
+// Mostra solo la mia mano non quella del computer
+
+void ManoGiocatore(char *manoGiocatore[NPLAYER][ROW][CLM], int sortOrder[NPLAYER][ROW][CLM], int idPlayer)
+{
+    printf("\n \nLA TUA MANO \n\n");
+    for (int x = 0; x < ROW; x++)
+    {
+        int n = sortOrder[idPlayer][x][1];
+        printf("%s ", manoGiocatore[idPlayer][n][0]);
+        printf("%s \n", manoGiocatore[idPlayer][n][1]);
+    }
+
+    return;
+}
+
+// Chiede al giocatore se vuole scartare qualche carta
+
+void scartaCarta(int mazzoCarte[][2], int id)
+{
+
+    char answer;
+    int numeroCarta;
+
+    for (int n = 0; n < 4; n++)
+    {
+        do
+        {
+            printf("Vuoi scartare una carta ? Y/N: ");
+            scanf("%c", &answer);
+            fflusher(answer);
+        } while (answer != 'y' && answer != 'n');
+
+        if (answer == 'y')
+        {
+            printf("Quale carta scartare la numero ?\n");
+            scanf("%d", &numeroCarta);
+            fflusher(answer);
+
+            for (int j = 0; j < 2; j++)
+            {
+                int tmp = mazzoCarte[5 + numeroCarta][j];
+                mazzoCarte[5 + numeroCarta][j] = mazzoCarte[carteFondo][j];
+                mazzoCarte[carteFondo][j] = tmp;
+                carteFondo--;
+            }
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    return;
+}
 
 // Mescola carte
 void shuffle()
@@ -114,7 +177,6 @@ void controlloMano(char *manoGiocatore[NPLAYER][ROW][CLM], int sortOrder[NPLAYER
     for (int tab = 0; tab < NPLAYER; tab++)
     {
         printf("La mano del giocatore %d  :", tab + 1);
-
         for (int x = 0; x < 7; x++)
         {
             if ((*check[x])(manoGiocatore, sortOrder, tab))
@@ -183,10 +245,11 @@ void controlloMano(char *manoGiocatore[NPLAYER][ROW][CLM], int sortOrder[NPLAYER
     return;
 }
 
-int vincitore(int combinazioneMaggiore[][2],int sortOrder[NPLAYER][ROW][CLM]){
-    
+int vincitore(int combinazioneMaggiore[][2], int sortOrder[NPLAYER][ROW][CLM])
+{
+
     int vincitore[1][2];
-       
+
     vincitore[0][0] = combinazioneMaggiore[0][0];
     vincitore[0][1] = combinazioneMaggiore[0][1];
 
@@ -213,52 +276,44 @@ int vincitore(int combinazioneMaggiore[][2],int sortOrder[NPLAYER][ROW][CLM]){
     printf("\nIl vincitore e' il giocatore nr %d\n\n", vincitore[0][1] + 1);
 
     return vincitore[0][1] + 1;
-
 }
 
 void scambiaCarte(int mazzoCarte[][2], int id, int from)
 {
 
-    for(int n = from, k = 51; n < 4; n++,k--)
+    for (int n = from; n < 4; n++)
     {
-        for(int j = 0; j < 2; j++)
+        for (int j = 0; j < 2; j++)
         {
             int tmp = mazzoCarte[n][j];
-            mazzoCarte[n][j] = mazzoCarte[k][j];
-            mazzoCarte[k][j] = tmp;
+            mazzoCarte[n][j] = mazzoCarte[carteFondo][j];
+            mazzoCarte[carteFondo][j] = tmp;
         }
+        carteFondo--;
     }
-    
 }
 
-bool AI_Decision(int mazzoCarte[][2], int idPlayer, int mano)
+void AI_Decision(int mazzoCarte[][2], int idPlayer, int mano)
 {
 
     switch (mano)
     {
     case 3:
         scambiaCarte(mazzoCarte, idPlayer, 3);
-        return true;
         break;
     case 4:
         scambiaCarte(mazzoCarte, idPlayer, 4);
-        return true;
         break;
     case 5:
         scambiaCarte(mazzoCarte, idPlayer, 2);
-        return true;
         break;
     case 6:
         scambiaCarte(mazzoCarte, idPlayer, 1);
-        return true;
         break;
     default:
         puts("error");
         break;
     }
-
-    return false;
-
 }
 
 int cartaMaggiore(int sortOrder[NPLAYER][ROW][CLM],
@@ -281,7 +336,7 @@ int cartaMaggiore(int sortOrder[NPLAYER][ROW][CLM],
 
 // Stampla le mani dei giocatori
 
-void mostraMano(char *manoGiocatore[NPLAYER][ROW][CLM], int sortOrder[NPLAYER][ROW][CLM])
+void mostraMani(char *manoGiocatore[NPLAYER][ROW][CLM], int sortOrder[NPLAYER][ROW][CLM])
 {
     for (int tab = 0; tab < NPLAYER; tab++)
     {
@@ -741,4 +796,10 @@ void cleaner(int wDeck[][13])
             wDeck[n][k] = 0;
         }
     }
+}
+
+void fflusher(int a)
+{
+    while (a = getchar() != '\n' && a != EOF)
+        ;
 }
